@@ -8,301 +8,329 @@
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   body {
     font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, sans-serif;
-    background: linear-gradient(135deg, #e8f4ff 0%, #fef6e4 100%);
+    background: linear-gradient(160deg, #ffeaa7 0%, #a8e6cf 50%, #dcedc1 100%);
     min-height: 100vh;
     direction: rtl;
     overflow-x: hidden;
   }
 
-  /* ہیڈر */
   .header {
-    background: #4a90e2;
+    background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1);
     color: white;
-    padding: 14px 18px;
+    padding: 15px 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   }
-  .header h1 { font-size: 19px; font-weight: 700; }
+  .header h1 { font-size: 20px; font-weight: 800; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
   .menu-btn {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.3);
     border: none;
     color: white;
-    font-size: 26px;
-    padding: 4px 12px;
-    border-radius: 8px;
+    font-size: 28px;
+    padding: 6px 14px;
+    border-radius: 12px;
     cursor: pointer;
     line-height: 1;
+    font-weight: bold;
   }
 
-  /* مینو */
   .menu {
     position: fixed;
     top: 0; right: -100%;
-    width: 82%;
-    max-width: 320px;
+    width: 85%;
+    max-width: 340px;
     height: 100vh;
-    background: white;
+    background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
     z-index: 200;
-    transition: right 0.3s ease;
-    box-shadow: -4px 0 20px rgba(0,0,0,0.2);
-    padding: 20px;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -5px 0 25px rgba(0,0,0,0.25);
+    padding: 22px;
     overflow-y: auto;
   }
   .menu.khula { right: 0; }
-  .menu h2 { color: #2c3e50; font-size: 20px; margin-bottom: 18px; text-align: center; }
+  .menu h2 { color: #2c3e50; font-size: 22px; margin-bottom: 20px; text-align: center; font-weight: 800; }
   .menu-item {
     display: block;
     width: 100%;
-    padding: 16px;
+    padding: 18px;
     margin-bottom: 12px;
-    font-size: 17px;
-    background: #f0f7ff;
-    border: 2px solid #d0e2f7;
-    border-radius: 14px;
+    font-size: 18px;
+    background: white;
+    border: 3px solid #d0e2f7;
+    border-radius: 16px;
     cursor: pointer;
     text-align: right;
     font-family: inherit;
     color: #1a1a2e;
-    font-weight: 600;
+    font-weight: 700;
+    transition: all 0.2s;
   }
-  .menu-item:active { background: #d0e2f7; }
-  .menu-item.chuna { background: #4a90e2; color: white; border-color: #4a90e2; }
+  .menu-item:active { transform: scale(0.97); background: #e8f4ff; }
+  .menu-item.chuna { background: linear-gradient(90deg, #4a90e2, #6bb6ff); color: white; border-color: #4a90e2; }
 
-  /* پردہ */
   .parda {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.5);
     z-index: 150;
     display: none;
   }
   .parda.dikhao { display: block; }
 
-  /* مرکزی حصہ */
   .main {
-    padding: 20px 16px 100px;
-    max-width: 500px;
+    padding: 20px 16px 120px;
+    max-width: 520px;
     margin: 0 auto;
   }
 
-  /* کارڈ */
   .card {
     background: white;
-    border-radius: 24px;
-    padding: 30px 20px;
+    border-radius: 30px;
+    padding: 35px 20px;
     text-align: center;
-    box-shadow: 0 8px 30px rgba(74,144,226,0.15);
+    box-shadow: 0 12px 40px rgba(74,144,226,0.25);
     margin-bottom: 20px;
-    min-height: 340px;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    position: relative;
   }
-  .emoji {
-    font-size: 90px;
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1);
+    z-index: -1;
+  }
+
+  .emoji-bara {
+    font-size: 110px;
     margin-bottom: 15px;
     line-height: 1;
+    filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.15));
   }
-  .bara-harf {
-    font-size: 80px;
-    font-weight: 800;
+  .harf-bara {
+    font-size: 100px;
+    font-weight: 900;
     color: #4a90e2;
     margin-bottom: 10px;
     line-height: 1.1;
+    text-shadow: 3px 3px 0px #feca57;
   }
-  .lafz {
-    font-size: 30px;
+  .lafz-bara {
+    font-size: 42px;
     color: #2c3e50;
-    font-weight: 700;
+    font-weight: 900;
     margin-bottom: 8px;
+    text-shadow: 2px 2px 0px #ffeaa7;
   }
   .chhota-lafz {
-    font-size: 18px;
+    font-size: 20px;
     color: #7f8c8d;
+    font-weight: 600;
   }
 
-  /* بٹن */
   .controls {
     display: flex;
     gap: 12px;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
   .nav-btn {
     flex: 1;
-    padding: 16px;
-    font-size: 17px;
+    padding: 18px;
+    font-size: 18px;
     border: none;
-    border-radius: 14px;
-    background: #4a90e2;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #4a90e2, #357abd);
     color: white;
     cursor: pointer;
     font-family: inherit;
-    font-weight: 700;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(74,144,226,0.3);
+    transition: all 0.2s;
   }
-  .nav-btn:active { background: #357abd; }
-  .nav-btn:disabled { background: #c5d5e8; }
+  .nav-btn:active { transform: scale(0.96); background: #357abd; }
+
+  .auto-btn {
+    width: 100%;
+    padding: 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #1dd1a1, #10ac84);
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 900;
+    margin-bottom: 18px;
+    box-shadow: 0 5px 15px rgba(29,209,161,0.4);
+    transition: all 0.2s;
+  }
+  .auto-btn:active { transform: scale(0.96); }
+  .auto-btn.chalraha { background: linear-gradient(135deg, #ee5a24, #f0932b); }
 
   .awaz-btn {
     width: 100%;
-    padding: 18px;
-    font-size: 19px;
+    padding: 20px;
+    font-size: 20px;
     border: none;
-    border-radius: 14px;
-    background: #f39c12;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #feca57, #ff9f43);
     color: white;
     cursor: pointer;
     font-family: inherit;
-    font-weight: 700;
-    margin-bottom: 20px;
+    font-weight: 900;
+    margin-bottom: 18px;
+    box-shadow: 0 5px 15px rgba(254,202,87,0.4);
+    transition: all 0.2s;
   }
-  .awaz-btn:active { background: #d68910; }
+  .awaz-btn:active { transform: scale(0.96); }
 
   .ginti-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 15px;
   }
   .ginti-cell {
-    background: #f0f7ff;
-    border: 2px solid #d0e2f7;
-    border-radius: 10px;
-    padding: 12px 4px;
-    font-size: 18px;
-    font-weight: 700;
+    background: white;
+    border: 3px solid #d0e2f7;
+    border-radius: 14px;
+    padding: 16px 4px;
+    font-size: 20px;
+    font-weight: 800;
     color: #2c3e50;
     cursor: pointer;
     text-align: center;
     font-family: inherit;
+    transition: all 0.2s;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
   }
-  .ginti-cell:active { background: #4a90e2; color: white; }
-  .ginti-cell.chuna { background: #4a90e2; color: white; border-color: #4a90e2; }
+  .ginti-cell:active { transform: scale(0.95); background: #4a90e2; color: white; }
 
   .ad-box {
     background: #fff8e1;
-    border: 2px dashed #f39c12;
-    border-radius: 12px;
-    padding: 20px;
+    border: 3px dashed #f39c12;
+    border-radius: 16px;
+    padding: 22px;
     text-align: center;
     color: #b9770e;
-    font-size: 14px;
-    margin-top: 10px;
+    font-size: 15px;
+    margin-top: 15px;
+    font-weight: 600;
   }
 
   .hint {
-    background: #e8f4ff;
-    padding: 12px;
-    border-radius: 10px;
-    font-size: 14px;
+    background: linear-gradient(90deg, #e8f4ff, #f0f7ff);
+    padding: 14px;
+    border-radius: 14px;
+    font-size: 15px;
     color: #2c3e50;
     margin-bottom: 15px;
     text-align: center;
+    font-weight: 700;
+    border: 2px solid #d0e2f7;
   }
 
-  @media (max-width: 360px) {
-    .bara-harf { font-size: 60px; }
-    .emoji { font-size: 70px; }
-    .lafz { font-size: 24px; }
-    .ginti-cell { font-size: 15px; padding: 10px 2px; }
+  @media (max-width: 380px) {
+    .harf-bara { font-size: 75px; }
+    .emoji-bara { font-size: 85px; }
+    .lafz-bara { font-size: 32px; }
+    .ginti-cell { font-size: 16px; padding: 12px 2px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ہیڈر -->
 <div class="header">
   <h1 id="title">اردو حروف</h1>
   <button class="menu-btn" id="menuBtn">☰</button>
 </div>
 
-<!-- پردہ -->
 <div class="parda" id="parda"></div>
 
-<!-- مینو -->
 <div class="menu" id="menu">
-  <h2>کھیلو اور سیکھو</h2>
-  <button class="menu-item chuna" data-mode="urdu-harf">اردو حروف — الف سے ے</button>
-  <button class="menu-item" data-mode="urdu-ginti">اردو گنتی — ایک، دو، تین</button>
-  <button class="menu-item" data-mode="eng-ginti">انگریزی گنتی — 1، 2، 3</button>
-  <button class="menu-item" data-mode="abc">انگریزی ABC — A to Z</button>
-  <button class="menu-item" data-mode="urdu-lafz">اردو الفاظ — الف سے انار</button>
+  <h2>🌈 کھیلو اور سیکھو</h2>
+  <button class="menu-item chuna" data-mode="urdu-harf">🔤 اردو حروف — الف سے ے</button>
+  <button class="menu-item" data-mode="urdu-lafz">📖 اردو الفاظ — الف سے انار</button>
+  <button class="menu-item" data-mode="urdu-ginti">🔢 اردو گنتی — ایک، دو، تین</button>
+  <button class="menu-item" data-mode="eng-ginti">🔢 انگریزی گنتی — 1، 2، 3</button>
+  <button class="menu-item" data-mode="abc">🅰️ انگریزی ABC — A to Z</button>
 </div>
 
-<!-- مرکزی حصہ -->
 <div class="main">
-  <div class="hint" id="hint">بٹن دبا کر آواز سنو</div>
+  <div class="hint" id="hint">🚀 Auto بٹن دبا کر خود چلاؤ</div>
   <div class="card" id="card"></div>
 
-  <!-- گنتی گرڈ -->
   <div class="ginti-grid" id="gintiGrid" style="display:none;"></div>
 
-  <!-- آواز بٹن -->
+  <button class="auto-btn" id="autoBtn">🚀 Auto چلاؤ</button>
   <button class="awaz-btn" id="awazBtn">🔊 آواز سنو</button>
 
-  <!-- اگلا پچھلا -->
   <div class="controls">
-    <button class="nav-btn" id="prevBtn">پچھلا</button>
-    <button class="nav-btn" id="nextBtn">اگلا</button>
+    <button class="nav-btn" id="prevBtn">⬅️ پچھلا</button>
+    <button class="nav-btn" id="nextBtn">اگلا ➡️</button>
   </div>
 
-  <!-- Adsterra کی جگہ -->
+  <!-- Adsterra یہاں لگاؤ -->
   <div class="ad-box" id="adBox">
-    یہاں Adsterra کا اشتہار لگے گا
+    📢 یہاں Adsterra کا اشتہار لگے گا
   </div>
 </div>
 
 <script>
-// ===================== ڈیٹا =====================
-
-// اردو حروف
+// ===================== ڈیٹا: پاکستانی نصاب والے صحیح الفاظ =====================
 var urduHarf = [
   { h: "ا", n: "الف", e: "🍎", w: "انار" },
   { h: "ب", n: "بے", e: "🦆", w: "بطخ" },
-  { h: "پ", n: "پے", e: "🐦", w: "پرندہ" },
-  { h: "ت", n: "تے", e: "🍎", w: "توت" },
-  { h: "ٹ", n: "ٹے", e: "🎩", w: "ٹوپی" },
+  { h: "پ", n: "پے", e: "🪁", w: "پتنگ" },
+  { h: "ت", n: "تے", e: "🦋", w: "تتلی" },
+  { h: "ٹ", n: "ٹے", e: "🚂", w: "ٹرین" },
   { h: "ث", n: "ثے", e: "🍇", w: "ثمر" },
-  { h: "ج", n: "جیم", e: "🌳", w: "جنگل" },
-  { h: "چ", n: "چے", e: "🫖", w: "چائے" },
-  { h: "ح", n: "حے", e: "🐳", w: "حوت" },
-  { h: "خ", n: "خے", e: "🐻", w: "خرگوش" },
-  { h: "د", n: "دال", e: "🌱", w: "درخت" },
+  { h: "ج", n: "جیم", e: "✈️", w: "جہاز" },
+  { h: "چ", n: "چے", e: "🐤", w: "چوزہ" },
+  { h: "ح", n: "حے", e: "✨", w: "حسن" },
+  { h: "خ", n: "خے", e: "🐰", w: "خرگوش" },
+  { h: "د", n: "دال", e: "🐑", w: "دنبہ" },
   { h: "ڈ", n: "ڈال", e: "🥁", w: "ڈھول" },
-  { h: "ذ", n: "ذال", e: "🦌", w: "ذبح" },
-  { h: "ر", n: "رے", e: "🛣️", w: "راستہ" },
-  { h: "ڑ", n: "ڑے", e: "🥖", w: "روٹی" },
-  { h: "ز", n: "زے", e: "🦓", w: "زیبرا" },
-  { h: "ژ", n: "ژے", e: "🗡️", w: "ژالہ" },
+  { h: "ذ", n: "ذال", e: "📚", w: "ذخیرہ" },
+  { h: "ر", n: "رے", e: "🪢", w: "رسی" },
+  { h: "ڑ", n: "ڑے", e: "🫓", w: "روٹی" },
+  { h: "ز", n: "زے", e: "🦒", w: "زرافہ" },
+  { h: "ژ", n: "ژے", e: "❄️", w: "ژالہ" },
   { h: "س", n: "سین", e: "🍏", w: "سیب" },
-  { h: "ش", n: "شین", e: "☀️", w: "شمس" },
-  { h: "ص", n: "صاد", e: "📦", w: "صندوق" },
-  { h: "ض", n: "ضاد", e: "🤲", w: "ضرب" },
-  { h: "ط", n: "طوے", e: "🦚", w: "طوطا" },
-  { h: "ظ", n: "ظوے", e: "🕛", w: "ظہر" },
-  { h: "ع", n: "عین", e: "👁️", w: "عین" },
-  { h: "غ", n: "غین", e: "☁️", w: "غبار" },
-  { h: "ف", n: "فے", e: "🐘", w: "فیل" },
+  { h: "ش", n: "شین", e: "🦁", w: "شیر" },
+  { h: "ص", n: "صاد", e: "🧼", w: "صابن" },
+  { h: "ض", n: "ضاد", e: "👴", w: "ضعیف" },
+  { h: "ط", n: "طوے", e: "🦜", w: "طوطا" },
+  { h: "ظ", n: "ظوے", e: "🍽️", w: "ظروف" },
+  { h: "ع", n: "عین", e: "🍇", w: "عنب" },
+  { h: "غ", n: "غین", e: "🎈", w: "غبارہ" },
+  { h: "ف", n: "فے", e: "🕊️", w: "فاختہ" },
   { h: "ق", n: "قاف", e: "🖊️", w: "قلم" },
   { h: "ک", n: "کاف", e: "📖", w: "کتاب" },
-  { h: "گ", n: "گاف", e: "🌹", w: "گلاب" },
-  { h: "ل", n: "لام", e: "🪵", w: "لکڑی" },
-  { h: "م", n: "میم", e: "🐟", w: "مچھلی" },
-  { h: "ن", n: "نون", e: "🌊", w: "نہر" },
-  { h: "و", n: "واو", e: "🌪️", w: "وادی" },
-  { h: "ہ", n: "ہے", e: "🐘", w: "ہاتھی" },
-  { h: "ء", n: "ہمزہ", e: "💧", w: "پانی" },
-  { h: "ی", n: "یے", e: "👐", w: "ید" },
-  { h: "ے", n: "ے", e: "🛏️", w: "بستر" }
+  { h: "گ", n: "گاف", e: "🐄", w: "گائے" },
+  { h: "ل", n: "لام", e: "🟡", w: "لڈو" },
+  { h: "م", n: "میم", e: "🪰", w: "مکھی" },
+  { h: "ن", n: "نون", e: "🌼", w: "نرگس" },
+  { h: "و", n: "واو", e: "⏰", w: "وقت" },
+  { h: "ہ", n: "ہے", e: "🌬️", w: "ہوا" },
+  { h: "ء", n: "ہمزہ", e: "🔤", w: "ہمزہ" },
+  { h: "ی", n: "یے", e: "🐂", w: "یاک" },
+  { h: "ے", n: "ے", e: "🤝", w: "یکجہتی" }
 ];
 
-// اردو گنتی 1-100
 var urduGinti = [
   "ایک","دو","تین","چار","پانچ","چھ","سات","آٹھ","نو","دس",
   "گیارہ","بارہ","تیرہ","چودہ","پندرہ","سولہ","سترہ","اٹھارہ","انیس","بیس",
@@ -316,37 +344,22 @@ var urduGinti = [
   "اکانوے","بانوے","ترانوے","چورانوے","پچانوے","چھیانوے","ستانوے","اٹھانوے","ننانوے","سو"
 ];
 
-// انگریزی ABC
 var abcList = [
-  { l: "A", w: "Apple", e: "🍎" },
-  { l: "B", w: "Ball", e: "⚽" },
-  { l: "C", w: "Cat", e: "🐱" },
-  { l: "D", w: "Dog", e: "🐶" },
-  { l: "E", w: "Elephant", e: "🐘" },
-  { l: "F", w: "Fish", e: "🐟" },
-  { l: "G", w: "Goat", e: "🐐" },
-  { l: "H", w: "Horse", e: "🐴" },
-  { l: "I", w: "Ice", e: "🧊" },
-  { l: "J", w: "Jug", e: "🫙" },
-  { l: "K", w: "Kite", e: "🪁" },
-  { l: "L", w: "Lion", e: "🦁" },
-  { l: "M", w: "Moon", e: "🌙" },
-  { l: "N", w: "Nest", e: "🪹" },
-  { l: "O", w: "Orange", e: "🍊" },
-  { l: "P", w: "Parrot", e: "🦜" },
-  { l: "Q", w: "Queen", e: "👑" },
-  { l: "R", w: "Rabbit", e: "🐰" },
-  { l: "S", w: "Sun", e: "☀️" },
-  { l: "T", w: "Tree", e: "🌳" },
-  { l: "U", w: "Umbrella", e: "☂️" },
-  { l: "V", w: "Van", e: "🚐" },
-  { l: "W", w: "Watch", e: "⌚" },
-  { l: "X", w: "Xylophone", e: "🎹" },
-  { l: "Y", w: "Yak", e: "🐃" },
-  { l: "Z", w: "Zebra", e: "🦓" }
+  { l: "A", w: "Apple", e: "🍎" }, { l: "B", w: "Ball", e: "⚽" },
+  { l: "C", w: "Cat", e: "🐱" }, { l: "D", w: "Dog", e: "🐶" },
+  { l: "E", w: "Elephant", e: "🐘" }, { l: "F", w: "Fish", e: "🐟" },
+  { l: "G", w: "Goat", e: "🐐" }, { l: "H", w: "Horse", e: "🐴" },
+  { l: "I", w: "Ice", e: "🧊" }, { l: "J", w: "Jug", e: "🫙" },
+  { l: "K", w: "Kite", e: "🪁" }, { l: "L", w: "Lion", e: "🦁" },
+  { l: "M", w: "Moon", e: "🌙" }, { l: "N", w: "Nest", e: "🪹" },
+  { l: "O", w: "Orange", e: "🍊" }, { l: "P", w: "Parrot", e: "🦜" },
+  { l: "Q", w: "Queen", e: "👑" }, { l: "R", w: "Rabbit", e: "🐰" },
+  { l: "S", w: "Sun", e: "☀️" }, { l: "T", w: "Tree", e: "🌳" },
+  { l: "U", w: "Umbrella", e: "☂️" }, { l: "V", w: "Van", e: "🚐" },
+  { l: "W", w: "Watch", e: "⌚" }, { l: "X", w: "Xylophone", e: "🎹" },
+  { l: "Y", w: "Yak", e: "🐃" }, { l: "Z", w: "Zebra", e: "🦓" }
 ];
 
-// انگریزی گنتی 1-100 الفاظ
 var engGinti = [
   "One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten",
   "Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen","Twenty",
@@ -364,30 +377,27 @@ var engGinti = [
 var mode = "urdu-harf";
 var index = 0;
 var gintiStart = 0;
+var autoChalraha = false;
+var autoTimer = null;
 
-// ===================== آواز =====================
+// ===================== آواز (لڑکی کی، تیز) =====================
 function bolo(text, lang) {
-  if (!('speechSynthesis' in window)) {
-    alert("آپ کے فون میں آواز کی سہولت نہیں ہے");
-    return;
-  }
+  if (!('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel();
   var u = new SpeechSynthesisUtterance(text);
   u.lang = lang || 'ur-PK';
-  u.rate = 0.75;
-  u.pitch = 1.3;
+  u.rate = 0.8;
+  u.pitch = 1.5;
   u.volume = 1.0;
 
-  // لڑکی کی آواز ڈھونڈو
   var voices = window.speechSynthesis.getVoices();
   for (var i = 0; i < voices.length; i++) {
     var v = voices[i];
-    if ((v.lang === 'ur-PK' || v.lang === 'hi-IN' || v.lang.indexOf('ur') === 0 || v.lang.indexOf('hi') === 0)) {
-      if (v.name.toLowerCase().indexOf('female') !== -1 ||
-          v.name.toLowerCase().indexOf('woman') !== -1 ||
-          v.name.toLowerCase().indexOf('zira') !== -1 ||
-          v.name.toLowerCase().indexOf('heera') !== -1 ||
-          v.name.toLowerCase().indexOf('swara') !== -1) {
+    var nm = v.name.toLowerCase();
+    if (v.lang.indexOf('ur') === 0 || v.lang.indexOf('hi') === 0 || v.lang === 'en-IN') {
+      if (nm.indexOf('female') !== -1 || nm.indexOf('woman') !== -1 ||
+          nm.indexOf('zira') !== -1 || nm.indexOf('heera') !== -1 ||
+          nm.indexOf('swara') !== -1 || nm.indexOf('kalpana') !== -1) {
         u.voice = v;
         break;
       }
@@ -396,13 +406,12 @@ function bolo(text, lang) {
   window.speechSynthesis.speak(u);
 }
 
-// آوازیں لوڈ کرو
 if ('speechSynthesis' in window) {
-  window.speechSynthesis.onvoiceschanged = function() {};
   window.speechSynthesis.getVoices();
+  window.speechSynthesis.onvoiceschanged = function() {};
 }
 
-// ===================== کارڈ دکھاؤ =====================
+// ===================== دکھاؤ =====================
 function dikhao() {
   var card = document.getElementById('card');
   var hint = document.getElementById('hint');
@@ -411,70 +420,53 @@ function dikhao() {
   grid.innerHTML = '';
   card.style.display = 'flex';
 
-  if (mode === 'urdu-harf') {
+  if (mode === 'urdu-harf' || mode === 'urdu-lafz') {
     var item = urduHarf[index];
-    card.innerHTML = '<div class="emoji">' + item.e + '</div>' +
-                     '<div class="bara-harf">' + item.h + '</div>' +
-                     '<div class="lafz">' + item.n + '</div>' +
-                     '<div class="chhota-lafz">' + item.w + '</div>';
-    hint.innerText = 'حرف نمبر ' + (index + 1) + ' — کل ' + urduHarf.length;
-    bolo(item.n + '۔ ' + item.w, 'ur-PK');
+    if (mode === 'urdu-harf') {
+      card.innerHTML = '<div class="emoji-bara">' + item.e + '</div>' +
+                       '<div class="harf-bara">' + item.h + '</div>' +
+                       '<div class="lafz-bara">' + item.n + '</div>' +
+                       '<div class="chhota-lafz">' + item.w + '</div>';
+      bolo(item.n + '۔ ' + item.w, 'ur-PK');
+    } else {
+      card.innerHTML = '<div class="emoji-bara">' + item.e + '</div>' +
+                       '<div class="harf-bara">' + item.h + '</div>' +
+                       '<div class="lafz-bara">' + item.w + '</div>';
+      bolo(item.w, 'ur-PK');
+    }
+    hint.innerText = '📖 ' + (index + 1) + ' / ' + urduHarf.length;
   }
 
   else if (mode === 'abc') {
     var item = abcList[index];
-    card.innerHTML = '<div class="emoji">' + item.e + '</div>' +
-                     '<div class="bara-harf">' + item.l + '</div>' +
-                     '<div class="lafz">' + item.w + '</div>';
-    hint.innerText = 'Letter ' + (index + 1) + ' — Total ' + abcList.length;
+    card.innerHTML = '<div class="emoji-bara">' + item.e + '</div>' +
+                     '<div class="harf-bara">' + item.l + '</div>' +
+                     '<div class="lafz-bara">' + item.w + '</div>';
+    hint.innerText = '🅰️ ' + (index + 1) + ' / ' + abcList.length;
     bolo(item.l + '. ' + item.w, 'en-US');
   }
 
   else if (mode === 'urdu-ginti' || mode === 'eng-ginti') {
     card.style.display = 'none';
     grid.style.display = 'grid';
-    hint.innerText = (mode === 'urdu-ginti' ? 'اردو گنتی' : 'انگریزی گنتی') +
-                     ' — ' + (gintiStart + 1) + ' سے ' + (gintiStart + 10) + ' تک';
+    hint.innerText = '🔢 ' + (gintiStart + 1) + ' سے ' + (gintiStart + 10) + ' تک';
     for (var i = 0; i < 10; i++) {
       var num = gintiStart + i + 1;
       var cell = document.createElement('button');
       cell.className = 'ginti-cell';
-      if (mode === 'urdu-ginti') {
-        cell.innerText = urduGinti[num - 1];
-      } else {
-        cell.innerText = num;
-      }
+      cell.innerText = (mode === 'urdu-ginti') ? urduGinti[num - 1] : num;
       cell.setAttribute('data-num', num);
       cell.onclick = (function(n) {
         return function() {
-          var cells = document.querySelectorAll('.ginti-cell');
-          cells.forEach(function(c) { c.classList.remove('chuna'); });
-          this.classList.add('chuna');
-          if (mode === 'urdu-ginti') {
-            bolo(urduGinti[n - 1], 'ur-PK');
-          } else {
-            bolo(engGinti[n - 1], 'en-US');
-          }
+          if (mode === 'urdu-ginti') bolo(urduGinti[n - 1], 'ur-PK');
+          else bolo(engGinti[n - 1], 'en-US');
         };
       })(num);
       grid.appendChild(cell);
     }
-    // پہلا نمبر خود بولے
     var pehla = gintiStart + 1;
-    if (mode === 'urdu-ginti') {
-      bolo(urduGinti[pehla - 1], 'ur-PK');
-    } else {
-      bolo(engGinti[pehla - 1], 'en-US');
-    }
-  }
-
-  else if (mode === 'urdu-lafz') {
-    var item = urduHarf[index];
-    card.innerHTML = '<div class="emoji">' + item.e + '</div>' +
-                     '<div class="bara-harf">' + item.h + '</div>' +
-                     '<div class="lafz">' + item.w + '</div>';
-    hint.innerText = 'لفظ نمبر ' + (index + 1) + ' — کل ' + urduHarf.length;
-    bolo(item.w, 'ur-PK');
+    if (mode === 'urdu-ginti') bolo(urduGinti[pehla - 1], 'ur-PK');
+    else bolo(engGinti[pehla - 1], 'en-US');
   }
 }
 
@@ -499,19 +491,41 @@ function prev() {
   dikhao();
 }
 
+// ===================== Auto چلاؤ =====================
+function autoBand() {
+  autoChalraha = false;
+  document.getElementById('autoBtn').classList.remove('chalraha');
+  document.getElementById('autoBtn').innerText = '🚀 Auto چلاؤ';
+  if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; }
+}
+
+function autoChalao() {
+  autoChalraha = true;
+  document.getElementById('autoBtn').classList.add('chalraha');
+  document.getElementById('autoBtn').innerText = '⏸️ Auto بند کرو';
+  function step() {
+    if (!autoChalraha) return;
+    next();
+    autoTimer = setTimeout(step, 2500);
+  }
+  autoTimer = setTimeout(step, 2500);
+}
+
+document.getElementById('autoBtn').onclick = function() {
+  if (autoChalraha) autoBand();
+  else autoChalao();
+};
+
+document.getElementById('awazBtn').onclick = function() { dikhao(); };
+
 // ===================== مینو =====================
 var menu = document.getElementById('menu');
 var parda = document.getElementById('parda');
-var menuBtn = document.getElementById('menuBtn');
-var title = document.getElementById('title');
-
-menuBtn.onclick = function() {
-  menu.classList.add('khula');
-  parda.classList.add('dikhao');
+document.getElementById('menuBtn').onclick = function() {
+  menu.classList.add('khula'); parda.classList.add('dikhao');
 };
 parda.onclick = function() {
-  menu.classList.remove('khula');
-  parda.classList.remove('dikhao');
+  menu.classList.remove('khula'); parda.classList.remove('dikhao');
 };
 
 var menuItems = document.querySelectorAll('.menu-item');
@@ -520,35 +534,19 @@ menuItems.forEach(function(btn) {
     menuItems.forEach(function(b) { b.classList.remove('chuna'); });
     this.classList.add('chuna');
     mode = this.getAttribute('data-mode');
-    index = 0;
-    gintiStart = 0;
+    index = 0; gintiStart = 0;
+    autoBand();
 
-    if (mode === 'urdu-harf') title.innerText = 'اردو حروف';
-    else if (mode === 'urdu-ginti') title.innerText = 'اردو گنتی';
-    else if (mode === 'eng-ginti') title.innerText = 'انگریزی گنتی';
-    else if (mode === 'abc') title.innerText = 'انگریزی ABC';
-    else if (mode === 'urdu-lafz') title.innerText = 'اردو الفاظ';
+    var titles = { 'urdu-harf': 'اردو حروف', 'urdu-lafz': 'اردو الفاظ', 'urdu-ginti': 'اردو گنتی', 'eng-ginti': 'انگریزی گنتی', 'abc': 'انگریزی ABC' };
+    document.getElementById('title').innerText = titles[mode];
 
-    menu.classList.remove('khula');
-    parda.classList.remove('dikhao');
+    menu.classList.remove('khula'); parda.classList.remove('dikhao');
     dikhao();
   };
 });
 
-// ===================== آواز بٹن =====================
-document.getElementById('awazBtn').onclick = function() {
-  dikhao();
-};
-
-// ===================== اگلا پچھلا بٹن =====================
 document.getElementById('nextBtn').onclick = next;
 document.getElementById('prevBtn').onclick = prev;
-
-// ===================== کی بورڈ =====================
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'ArrowLeft') next();
-  if (e.key === 'ArrowRight') prev();
-});
 
 // ===================== شروع =====================
 dikhao();
