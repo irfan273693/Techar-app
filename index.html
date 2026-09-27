@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>کراچی کڈز — کھیلو، سیکho اور مزے کرو</title>
+<title>کراچی کڈز — کھیلو اور سیکھو</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   body {
@@ -12,32 +12,33 @@
     min-height: 100vh;
     direction: rtl;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .header {
     background: linear-gradient(90deg, #ff416c, #ff4b2b);
     color: white;
-    padding: 16px 20px;
+    padding: 14px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
   }
-  .header h1 { font-size: 22px; font-weight: 900; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+  .header h1 { font-size: 20px; font-weight: 900; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
   .menu-btn {
     background: rgba(255,255,255,0.25);
     border: none;
     color: white;
-    font-size: 26px;
-    padding: 6px 14px;
-    border-radius: 14px;
+    font-size: 24px;
+    padding: 4px 12px;
+    border-radius: 12px;
     cursor: pointer;
-    line-height: 1;
     font-weight: bold;
     backdrop-filter: blur(5px);
   }
@@ -46,104 +47,111 @@
     position: fixed;
     top: 0; right: -100%;
     width: 85%;
-    max-width: 350px;
+    max-width: 320px;
     height: 100vh;
-    background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+    background: #ffffff;
     z-index: 200;
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: -10px 0 30px rgba(0,0,0,0.3);
-    padding: 25px 20px;
+    padding: 20px 15px;
     overflow-y: auto;
   }
   .menu.khula { right: 0; }
-  .menu h2 { color: #2c3e50; font-size: 24px; margin-bottom: 25px; text-align: center; font-weight: 900; }
+  .menu h2 { color: #2c3e50; font-size: 22px; margin-bottom: 20px; text-align: center; font-weight: 900; }
   .menu-item {
     display: block;
     width: 100%;
-    padding: 16px;
-    margin-bottom: 12px;
-    font-size: 17px;
-    background: white;
-    border: 3px solid #e1ebfd;
-    border-radius: 18px;
+    padding: 14px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    background: #f8f9fa;
+    border: 2px solid #e1ebfd;
+    border-radius: 15px;
     cursor: pointer;
     text-align: right;
     font-family: inherit;
     color: #2c3e50;
     font-weight: 800;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.02);
     transition: all 0.2s;
   }
-  .menu-item:active { transform: scale(0.97); background: #e8f4ff; }
-  .menu-item.chuna { background: linear-gradient(90deg, #ff416c, #ff4b2b); color: white; border-color: #ff416c; box-shadow: 0 6px 15px rgba(255,65,108,0.4); }
+  .menu-item.chuna { background: linear-gradient(90deg, #ff416c, #ff4b2b); color: white; border-color: #ff416c; }
 
   .parda {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.5);
     z-index: 150;
     display: none;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(2px);
   }
   .parda.dikhao { display: block; }
 
   .main {
-    padding: 20px 16px 100px;
-    max-width: 500px;
+    padding: 15px;
+    max-width: 480px;
     margin: 0 auto;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .content-area {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
   .hint {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 12px;
-    border-radius: 16px;
-    font-size: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 10px;
+    border-radius: 14px;
+    font-size: 15px;
     color: #d63031;
-    margin-bottom: 15px;
     text-align: center;
     font-weight: 800;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
     border: 2px solid #ff7675;
   }
 
   .card {
     background: white;
-    border-radius: 35px;
-    padding: 30px 20px;
+    border-radius: 30px;
+    padding: 25px 15px;
     text-align: center;
-    box-shadow: 0 15px 45px rgba(0,0,0,0.15);
-    margin-bottom: 20px;
-    min-height: 380px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    min-height: 310px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
-    border: 5px solid #fff;
+    border: 4px solid #fff;
   }
 
   .emoji-bara {
-    font-size: 120px;
-    margin-bottom: 10px;
+    font-size: 100px;
+    margin-bottom: 8px;
     line-height: 1;
-    filter: drop-shadow(4px 6px 8px rgba(0,0,0,0.2));
-    animation: bounceIn 0.5s ease;
+    filter: drop-shadow(3px 5px 6px rgba(0,0,0,0.15));
+    animation: bounceIn 0.4s ease;
   }
   .harf-bara {
-    font-size: 90px;
+    font-size: 80px;
     font-weight: 900;
-    margin-bottom: 5px;
-    line-height: 1.1;
-    text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+    margin-bottom: 4px;
+    line-height: 1;
   }
   .lafz-bara {
-    font-size: 40px;
+    font-size: 36px;
     color: #2d3436;
     font-weight: 900;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
   }
   .chhota-lafz {
-    font-size: 22px;
+    font-size: 20px;
     color: #636e72;
     font-weight: 700;
   }
@@ -156,100 +164,111 @@
 
   .controls {
     display: flex;
-    gap: 12px;
-    justify-content: center;
-    margin-bottom: 15px;
+    gap: 10px;
   }
   .nav-btn {
     flex: 1;
-    padding: 16px;
-    font-size: 18px;
+    padding: 14px;
+    font-size: 17px;
     border: none;
-    border-radius: 18px;
+    border-radius: 15px;
     background: linear-gradient(135deg, #0984e3, #74b9ff);
     color: white;
     cursor: pointer;
     font-family: inherit;
     font-weight: 900;
-    box-shadow: 0 6px 20px rgba(9,132,227,0.4);
-    transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(9,132,227,0.3);
   }
-  .nav-btn:active { transform: scale(0.95); }
+  .nav-btn:active { transform: scale(0.96); }
 
   .auto-btn {
     width: 100%;
-    padding: 18px;
-    font-size: 19px;
+    padding: 14px;
+    font-size: 17px;
     border: none;
-    border-radius: 18px;
+    border-radius: 15px;
     background: linear-gradient(135deg, #00b894, #55efc4);
     color: white;
     cursor: pointer;
     font-family: inherit;
     font-weight: 900;
-    margin-bottom: 12px;
-    box-shadow: 0 6px 20px rgba(0,184,148,0.4);
-    transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(0,184,148,0.3);
   }
-  .auto-btn:active { transform: scale(0.95); }
-  .auto-btn.chalraha { background: linear-gradient(135deg, #d63031, #ff7675); box-shadow: 0 6px 20px rgba(214,48,49,0.4); }
+  .auto-btn:active { transform: scale(0.96); }
+  .auto-btn.chalraha { background: linear-gradient(135deg, #d63031, #ff7675); }
 
   .awaz-btn {
     width: 100%;
-    padding: 18px;
-    font-size: 19px;
+    padding: 14px;
+    font-size: 17px;
     border: none;
-    border-radius: 18px;
+    border-radius: 15px;
     background: linear-gradient(135deg, #fdcb6e, #ffeaa7);
     color: #2d3436;
     cursor: pointer;
     font-family: inherit;
     font-weight: 900;
-    margin-bottom: 15px;
-    box-shadow: 0 6px 20px rgba(253,203,110,0.4);
-    transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(253,203,110,0.3);
   }
-  .awaz-btn:active { transform: scale(0.95); }
+  .awaz-btn:active { transform: scale(0.96); }
 
-  /* گیم سیکشن اسسٹائل */
+  /* گیم اسکرین */
   .game-box {
     background: white;
-    border-radius: 35px;
-    padding: 25px 20px;
+    border-radius: 30px;
+    padding: 20px;
     text-align: center;
-    box-shadow: 0 15px 45px rgba(0,0,0,0.15);
-    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
     display: none;
   }
   .game-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 20px;
+    gap: 10px;
+    margin-top: 15px;
   }
   .g-opt-btn {
-    padding: 20px;
-    font-size: 26px;
+    padding: 16px;
+    font-size: 24px;
     font-weight: 900;
-    border: 3px solid #dfe6e9;
+    border: 2px solid #dfe6e9;
     background: #f1f2f6;
-    border-radius: 20px;
+    border-radius: 16px;
     cursor: pointer;
-    transition: all 0.2s;
   }
   .g-opt-btn:active { transform: scale(0.95); }
 
+  /* کسٹم پاپ اپ نوٹیفیکیشن (بغیر یو آر ایل اور نام کے) */
+  .custom-popup {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    background: white;
+    padding: 25px 35px;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    z-index: 300;
+    text-align: center;
+    display: none;
+    transition: transform 0.3s ease;
+    border: 4px solid #ff7675;
+  }
+  .custom-popup.show { display: block; transform: translate(-50%, -50%) scale(1); }
+  .custom-popup h3 { font-size: 24px; margin-bottom: 8px; font-weight: 900; }
+  .custom-popup p { font-size: 16px; color: #636e72; font-weight: 700; }
+
+  /* ایڈ باکس (خوبصورت اور کمپیکٹ) */
   .ad-box {
     background: #fff;
-    border: 3px dashed #ff7675;
-    border-radius: 18px;
-    padding: 18px;
+    border: 2px dashed #ff7675;
+    border-radius: 14px;
+    padding: 12px;
     text-align: center;
     color: #d63031;
-    font-size: 15px;
-    margin-top: 15px;
+    font-size: 14px;
     font-weight: 800;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.03);
   }
 </style>
 </head>
@@ -262,51 +281,57 @@
 
 <div class="parda" id="parda"></div>
 
-<!-- تھری ڈاٹ / سلائیڈ مینو -->
+<!-- کسٹم پاپ اپ نوٹیفیکیشن -->
+<div class="custom-popup" id="customPopup">
+  <h3 id="popupTitle" style="color: #00b894;">🎉 شاباش!</h3>
+  <p id="popupText">آپ کا جواب بالکل درست ہے!</p>
+</div>
+
+<!-- سلائیڈ مینو -->
 <div class="menu" id="menu">
   <h2>🌟 کراچی کڈز زون 🌟</h2>
   <button class="menu-item chuna" data-mode="urdu-harf">📖 اردو حروف (الف سے انار)</button>
   <button class="menu-item" data-mode="abc">🔤 انگریزی ABC (A for Apple)</button>
   <button class="menu-item" data-mode="urdu-ginti">🔢 اردو گنتی (ایک سے سو)</button>
   <button class="menu-item" data-mode="eng-ginti">🔢 انگلش گنتی (1 to 100)</button>
-  <button class="menu-item" data-mode="quiz-game" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none;">🎮 بچوں کا پھل اور حرف گیم</button>
+  <button class="menu-item" data-mode="quiz-game" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none;">🎮 بچوں کا کوئز گیم</button>
 </div>
 
 <div class="main">
-  <div class="hint" id="hint">🚀 آٹو بٹن دبائیں یا خود آگے پیچھے کریں</div>
+  <div class="content-area">
+    <div class="hint" id="hint">🚀 آٹو بٹن دبائیں یا خود آگے پیچھے کریں</div>
 
-  <!-- مین فلیش کارڈ اسکرین -->
-  <div class="card" id="card"></div>
+    <!-- فلیش کارڈ اسکرین -->
+    <div class="card" id="card"></div>
 
-  <!-- گیم اسکرین (جب گیم سلیکٹ ہو گی) -->
-  <div class="game-box" id="gameBox">
-    <h2 style="color: #6c5ce7; margin-bottom: 10px;">🎮 صحیح جواب بوجھو!</h2>
-    <div id="qEmoji" style="font-size: 90px; margin: 15px 0;">🍎</div>
-    <p id="qText" style="font-size: 20px; font-weight: 800; color: #2d3436;">یہ کس حرف سے ہے؟</p>
-    <div class="game-options" id="gOptions"></div>
-  </div>
+    <!-- گیم اسکرین -->
+    <div class="game-box" id="gameBox">
+      <h2 style="color: #6c5ce7; margin-bottom: 5px;">🎮 صحیح جواب بوجھو!</h2>
+      <div id="qEmoji" style="font-size: 80px; margin: 10px 0;">🍎</div>
+      <p id="qText" style="font-size: 18px; font-weight: 800; color: #2d3436;">یہ کس حرف سے ہے؟</p>
+      <div class="game-options" id="gOptions"></div>
+    </div>
 
-  <div id="actionControls">
-    <button class="auto-btn" id="autoBtn">🚀 آٹو چلاؤ (Auto Play)</button>
-    <button class="awaz-btn" id="awazBtn">🔊 آواز سنو (Sound)</button>
+    <div id="actionControls" style="display: flex; flex-direction: column; gap: 10px;">
+      <button class="auto-btn" id="autoBtn">🚀 آٹو چلاؤ (Auto Play)</button>
+      <button class="awaz-btn" id="awazBtn">🔊 آواز سنو (Sound)</button>
 
-    <div class="controls">
-      <button class="nav-btn" id="prevBtn">⬅️ پچھلا</button>
-      <button class="nav-btn" id="nextBtn">اگلا ➡️</button>
+      <div class="controls">
+        <button class="nav-btn" id="prevBtn">⬅️ پچھلا</button>
+        <button class="nav-btn" id="nextBtn">اگلا ➡️</button>
+      </div>
     </div>
   </div>
 
-  <!-- Adsterra ایڈ باکس (Median.co میں ایکسٹرنل لنک سیٹنگ کے ساتھ بہترین چلے گا) -->
+  <!-- ایڈ باکس (یہیں آپ اپنا Adsterra کوڈ بعد میں لگائیں گے) -->
   <div class="ad-box" id="adBox">
-    📢 اشتہار (Adsterra Direct Link یہاں لنک ہوگا)
+    📢 اشتہار کی جگہ (Adsterra Link)
   </div>
 </div>
 
 <script>
-// رنگوں کی حسین لسٹ
 var rangList = ["#ff7675", "#74b9ff", "#55efc4", "#ffeaa7", "#a29bfe", "#fd79a8", "#00b894", "#0984e3", "#e17055", "#6c5ce7"];
 
-// کراچی اسکول کتب کے مطابق مستند اردو حروف اور الفاظ
 var urduHarf = [
   { h: "ا", n: "الف", e: "🍎", w: "انار" },
   { h: "ب", n: "بے", e: "🦆", w: "بطخ" },
@@ -372,16 +397,28 @@ var index = 0;
 var autoChalraha = false;
 var autoTimer = null;
 
-// زور دار اور صاف آواز کا فنکشن
 function bolo(text, lang) {
   if (!('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel();
   var u = new SpeechSynthesisUtterance(text);
   u.lang = lang || 'ur-PK';
-  u.rate = 0.85; // بچوں کے لیے آرام دہ رفتار
+  u.rate = 0.85;
   u.pitch = 1.3;
-  u.volume = 1.0; // فل آواز
+  u.volume = 1.0;
   window.speechSynthesis.speak(u);
+}
+
+function showPopup(title, text, color) {
+  var popup = document.getElementById('customPopup');
+  var pTitle = document.getElementById('popupTitle');
+  var pText = document.getElementById('popupText');
+  pTitle.innerText = title;
+  pTitle.style.color = color;
+  pText.innerText = text;
+  popup.classList.add('show');
+  setTimeout(function() {
+    popup.classList.remove('show');
+  }, 1500);
 }
 
 function dikhao() {
@@ -400,7 +437,7 @@ function dikhao() {
 
   gameBox.style.display = 'none';
   card.style.display = 'flex';
-  actionControls.style.display = 'block';
+  actionControls.style.display = 'flex';
 
   var color = rangList[index % rangList.length];
 
@@ -418,7 +455,7 @@ function dikhao() {
     card.innerHTML = '<div class="emoji-bara">' + item.e + '</div>' +
                      '<div class="harf-bara" style="color:' + color + '">' + item.l + '</div>' +
                      '<div class="lafz-bara" style="color:' + color + '">' + item.l + ' for ' + item.w + '</div>';
-    hint.innerText = '🔤 انگلش اے بی سی: ' + (index + 1) + ' / ' + abcList.length;
+    hint.innerText = '🔤 انگلش ABC: ' + (index + 1) + ' / ' + abcList.length;
     bolo(item.l + ' for ' + item.w, 'en-US');
   }
   else if (mode === 'urdu-ginti') {
@@ -453,7 +490,6 @@ function prev() {
   dikhao();
 }
 
-// آٹو پلے فیکن
 function autoBand() {
   autoChalraha = false;
   var btn = document.getElementById('autoBtn');
@@ -484,7 +520,6 @@ document.getElementById('awazBtn').onclick = function() { dikhao(); };
 document.getElementById('nextBtn').onclick = next;
 document.getElementById('prevBtn').onclick = prev;
 
-// مینو ہینڈلنگ
 var menu = document.getElementById('menu');
 var parda = document.getElementById('parda');
 document.getElementById('menuBtn').onclick = function() {
@@ -517,7 +552,6 @@ menuItems.forEach(function(btn) {
   };
 });
 
-// بچوں کا منی کوئز گیم فنکشن
 function shuruGame() {
   var randItem = urduHarf[Math.floor(Math.random() * urduHarf.length)];
   document.getElementById('qEmoji').innerText = randItem.e;
@@ -540,11 +574,11 @@ function shuruGame() {
     b.onclick = function() {
       if(opt === randItem.h) {
         bolo('بہت اچھے! بالکل درست جواب', 'ur-PK');
-        alert('🎉 شاباش! آپ کا جواب بالکل صحیح ہے!');
-        shuruGame();
+        showPopup("🎉 شاباش!", "آپ کا جواب بالکل صحیح ہے!", "#00b894");
+        setTimeout(shuruGame, 1600);
       } else {
         bolo('دوبارہ کوشش کریں', 'ur-PK');
-        alert('❌ غلط! دوبارہ کوشش کریں۔');
+        showPopup("❌ غلط!", "دوبارہ کوشش کریں!", "#d63031");
       }
     };
     gOptDiv.appendChild(b);
