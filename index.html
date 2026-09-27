@@ -30,7 +30,7 @@
     border-bottom-left-radius: 18px;
     border-bottom-right-radius: 18px;
   }
-  .header h1 { font-size: 20px; font-weight: 900; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+  .header h1 { font-size: 19px; font-weight: 900; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
   .menu-btn {
     background: rgba(255,255,255,0.25);
     border: none;
@@ -57,22 +57,22 @@
     overflow-y: auto;
   }
   .menu.khula { right: 0; }
-  .menu h2 { color: #2c3e50; font-size: 22px; margin-bottom: 20px; text-align: center; font-weight: 900; }
+  .menu h2 { color: #2c3e50; font-size: 20px; margin-bottom: 15px; text-align: center; font-weight: 900; }
   .menu-item {
     display: block;
     width: 100%;
-    padding: 14px;
-    margin-bottom: 10px;
-    font-size: 16px;
+    padding: 12px;
+    margin-bottom: 8px;
+    font-size: 15px;
     background: #f8f9fa;
     border: 2px solid #e1ebfd;
-    border-radius: 15px;
+    border-radius: 14px;
     cursor: pointer;
     text-align: right;
     font-family: inherit;
     color: #2c3e50;
     font-weight: 800;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     transition: all 0.2s;
   }
   .menu-item.chuna { background: linear-gradient(90deg, #ff416c, #ff4b2b); color: white; border-color: #ff416c; }
@@ -108,7 +108,7 @@
     background: rgba(255, 255, 255, 0.95);
     padding: 10px;
     border-radius: 14px;
-    font-size: 15px;
+    font-size: 14px;
     color: #d63031;
     text-align: center;
     font-weight: 800;
@@ -122,7 +122,7 @@
     padding: 25px 15px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    min-height: 310px;
+    min-height: 290px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -132,26 +132,26 @@
   }
 
   .emoji-bara {
-    font-size: 100px;
+    font-size: 90px;
     margin-bottom: 8px;
     line-height: 1;
     filter: drop-shadow(3px 5px 6px rgba(0,0,0,0.15));
     animation: bounceIn 0.4s ease;
   }
   .harf-bara {
-    font-size: 80px;
+    font-size: 70px;
     font-weight: 900;
     margin-bottom: 4px;
     line-height: 1;
   }
   .lafz-bara {
-    font-size: 36px;
+    font-size: 32px;
     color: #2d3436;
     font-weight: 900;
     margin-bottom: 4px;
   }
   .chhota-lafz {
-    font-size: 20px;
+    font-size: 18px;
     color: #636e72;
     font-weight: 700;
   }
@@ -168,8 +168,8 @@
   }
   .nav-btn {
     flex: 1;
-    padding: 14px;
-    font-size: 17px;
+    padding: 13px;
+    font-size: 16px;
     border: none;
     border-radius: 15px;
     background: linear-gradient(135deg, #0984e3, #74b9ff);
@@ -183,8 +183,8 @@
 
   .auto-btn {
     width: 100%;
-    padding: 14px;
-    font-size: 17px;
+    padding: 13px;
+    font-size: 16px;
     border: none;
     border-radius: 15px;
     background: linear-gradient(135deg, #00b894, #55efc4);
@@ -199,8 +199,8 @@
 
   .awaz-btn {
     width: 100%;
-    padding: 14px;
-    font-size: 17px;
+    padding: 13px;
+    font-size: 16px;
     border: none;
     border-radius: 15px;
     background: linear-gradient(135deg, #fdcb6e, #ffeaa7);
@@ -228,8 +228,8 @@
     margin-top: 15px;
   }
   .g-opt-btn {
-    padding: 16px;
-    font-size: 24px;
+    padding: 15px;
+    font-size: 22px;
     font-weight: 900;
     border: 2px solid #dfe6e9;
     background: #f1f2f6;
@@ -238,7 +238,7 @@
   }
   .g-opt-btn:active { transform: scale(0.95); }
 
-  /* کسٹم پاپ اپ نوٹیفیکیشن */
+  /* کسٹم پاپ اپ */
   .custom-popup {
     position: fixed;
     top: 50%; left: 50%;
@@ -262,12 +262,12 @@
     background: #fff;
     border: 2px dashed #ff7675;
     border-radius: 14px;
-    padding: 12px;
+    padding: 10px;
     text-align: center;
     color: #d63031;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 800;
-    margin-top: 12px;
+    margin-top: 10px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.03);
   }
 </style>
@@ -281,17 +281,19 @@
 
 <div class="parda" id="parda"></div>
 
-<!-- کسٹم پاپ اپ نوٹیفیکیشن -->
 <div class="custom-popup" id="customPopup">
   <h3 id="popupTitle" style="color: #00b894;">🎉 شاباش!</h3>
   <p id="popupText">آپ کا جواب بالکل صحیح ہے!</p>
 </div>
 
-<!-- سلائیڈ مینو -->
+<!-- مینو میں نئے اضافے (پرانا ڈیٹا اپنی جگہ موجود ہے) -->
 <div class="menu" id="menu">
   <h2>🌟 کراچی کڈز زون 🌟</h2>
   <button class="menu-item chuna" data-mode="urdu-harf">📖 اردو حروف (الف سے ے)</button>
   <button class="menu-item" data-mode="abc">🔤 انگلش ABC (A سے Z)</button>
+  <button class="menu-item" data-mode="animals">🦁 جانوروں کے نام (Animals)</button>
+  <button class="menu-item" data-mode="fruits">🍎 پھلوں کے نام (Fruits)</button>
+  <button class="menu-item" data-mode="colors">🎨 رنگوں کے نام (Colors)</button>
   <button class="menu-item" data-mode="urdu-ginti">🔢 اردو گنتی (ایک سے سو)</button>
   <button class="menu-item" data-mode="eng-ginti">🔢 انگلش گنتی (1 to 100)</button>
   <button class="menu-item" data-mode="quiz-game" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none;">🎮 بچوں کا کوئز گیم</button>
@@ -301,14 +303,12 @@
   <div class="content-area">
     <div class="hint" id="hint">🚀 آٹو بٹن دبائیں یا خود آگے پیچھے کریں</div>
 
-    <!-- فلیش کارڈ اسکرین -->
     <div class="card" id="card"></div>
 
-    <!-- گیم اسکرین -->
     <div class="game-box" id="gameBox">
       <h2 style="color: #6c5ce7; margin-bottom: 5px;">🎮 صحیح جواب بوجھو!</h2>
-      <div id="qEmoji" style="font-size: 80px; margin: 10px 0;">🍎</div>
-      <p id="qText" style="font-size: 18px; font-weight: 800; color: #2d3436;">یہ کس حرف سے ہے؟</p>
+      <div id="qEmoji" style="font-size: 70px; margin: 10px 0;">🍎</div>
+      <p id="qText" style="font-size: 17px; font-weight: 800; color: #2d3436;">یہ کس حرف سے ہے؟</p>
       <div class="game-options" id="gOptions"></div>
     </div>
 
@@ -323,7 +323,6 @@
     </div>
   </div>
 
-  <!-- ایڈ باکس -->
   <div class="ad-box" id="adBox">
     📢 اشتہار کی جگہ (Adsterra Link)
   </div>
@@ -332,46 +331,30 @@
 <script>
 var rangList = ["#ff7675", "#74b9ff", "#55efc4", "#ffeaa7", "#a29bfe", "#fd79a8", "#00b894", "#0984e3", "#e17055", "#6c5ce7"];
 
+// اصل اردو حروف (الف سے ے)
 var urduHarf = [
-  { h: "ا", n: "الف", e: "🍎", w: "انار" },
-  { h: "ب", n: "بے", e: "🦆", w: "بطخ" },
-  { h: "پ", n: "پے", e: "🪁", w: "پتنگ" },
-  { h: "ت", n: "تے", e: "🦋", w: "تتلی" },
-  { h: "ٹ", n: "ٹے", e: "🚂", w: "ٹرین" },
-  { h: "ث", n: "ثے", e: "🍇", w: "ثمر" },
-  { h: "ج", n: "جیم", e: "✈️", w: "جہاز" },
-  { h: "چ", n: "چے", e: "🐤", w: "چوزہ" },
-  { h: "ح", n: "حے", e: "✨", w: "حوا" },
-  { h: "خ", n: "خے", e: "🐰", w: "خرگوش" },
-  { h: "د", n: "دال", e: "🌳", w: "درخت" },
-  { h: "ڈ", n: "ڈال", e: "🥁", w: "ڈھول" },
-  { h: "ذ", n: "ذال", e: "📚", w: "ذخیرہ" },
-  { h: "ر", n: "رے", e: "🪢", w: "رسی" },
-  { h: "ڑ", n: "ڑے", e: "🫓", w: "پہاڑ" },
-  { h: "ز", n: "زے", e: "🦒", w: "زرافہ" },
-  { h: "ژ", n: "ژے", e: "❄️", w: "ژالہ باری" },
-  { h: "س", n: "سین", e: "🍏", w: "سیب" },
-  { h: "ش", n: "شین", e: "🦁", w: "شیر" },
-  { h: "ص", n: "صاد", e: "🧼", w: "صابن" },
-  { h: "ض", n: "ضاد", e: "🦷", w: "ضیافت" },
-  { h: "ط", n: "طوے", e: "🦜", w: "طوطا" },
-  { h: "ظ", n: "ظوے", e: "🍳", w: "ظروف" },
-  { h: "ع", n: "عین", e: "👁️", w: "عینک" },
-  { h: "غ", n: "غین", e: "🎈", w: "غبارہ" },
-  { h: "ف", n: "فے", e: "⚽", w: "فٹبال" },
-  { h: "ق", n: "قاف", e: "🖊️", w: "قلم" },
-  { h: "ک", n: "کاف", e: "📖", w: "کتاب" },
-  { h: "گ", n: "گاف", e: "🐄", w: "گائے" },
-  { h: "ل", n: "لام", e: "🍋", w: "لسی" },
-  { h: "م", n: "میم", e: "🍌", w: "موزہ" },
-  { h: "ن", n: "نون", e: "⭐️", w: "نرگس" },
-  { h: "و", n: "واو", e: "⏰", w: "وقت" },
-  { h: "ہ", n: "ہے", e: "🚁", w: "ہاتھی" },
-  { h: "ء", n: "ہمزہ", e: "🔤", w: "ہمزہ" },
-  { h: "ی", n: "یے", e: "🐂", w: "یاک" },
+  { h: "ا", n: "الف", e: "🍎", w: "انار" }, { h: "ب", n: "بے", e: "🦆", w: "بطخ" },
+  { h: "پ", n: "پے", e: "🪁", w: "پتنگ" }, { h: "ت", n: "تے", e: "🦋", w: "تتلی" },
+  { h: "ٹ", n: "ٹے", e: "🚂", w: "ٹرین" }, { h: "ث", n: "ثے", e: "🍇", w: "ثمر" },
+  { h: "ج", n: "جیم", e: "✈️", w: "جہاز" }, { h: "چ", n: "چے", e: "🐤", w: "چوزہ" },
+  { h: "ح", n: "حے", e: "✨", w: "حوا" }, { h: "خ", n: "خے", e: "🐰", w: "خرگوش" },
+  { h: "د", n: "دال", e: "🌳", w: "درخت" }, { h: "ڈ", n: "ڈال", e: "🥁", w: "ڈھول" },
+  { h: "ذ", n: "ذال", e: "📚", w: "ذخیرہ" }, { h: "ر", n: "رے", e: "🪢", w: "رسی" },
+  { h: "ڑ", n: "ڑے", e: "🫓", w: "پہاڑ" }, { h: "ز", n: "زے", e: "🦒", w: "زرافہ" },
+  { h: "ژ", n: "ژے", e: "❄️", w: "ژالہ باری" }, { h: "س", n: "سین", e: "🍏", w: "سیب" },
+  { h: "ش", n: "شین", e: "🦁", w: "شیر" }, { h: "ص", n: "صاد", e: "🧼", w: "صابن" },
+  { h: "ض", n: "ضاد", e: "🦷", w: "ضیافت" }, { h: "ط", n: "طوے", e: "🦜", w: "طوطا" },
+  { h: "ظ", n: "ظوے", e: "🍳", w: "ظروف" }, { h: "ع", n: "عین", e: "👁️", w: "عینک" },
+  { h: "غ", n: "غین", e: "🎈", w: "غبارہ" }, { h: "ف", n: "فے", e: "⚽", w: "فٹبال" },
+  { h: "ق", n: "قاف", e: "🖊️", w: "قلم" }, { h: "ک", n: "کاف", e: "📖", w: "کتاب" },
+  { h: "گ", n: "گاف", e: "🐄", w: "گائے" }, { h: "ل", n: "لام", e: "🍋", w: "لسی" },
+  { h: "م", n: "میم", e: "🍌", w: "موزہ" }, { h: "ن", n: "نون", e: "⭐️", w: "نرگس" },
+  { h: "و", n: "واو", e: "⏰", w: "وقت" }, { h: "ہ", n: "ہے", e: "🚁", w: "ہاتھی" },
+  { h: "ء", n: "ہمزہ", e: "🔤", w: "ہمزہ" }, { h: "ی", n: "یے", e: "🐂", w: "یاک" },
   { h: "ے", n: "بڑی ے", e: "🤝", w: "یکجہتی" }
 ];
 
+// اصل ABC
 var abcList = [
   { l: "A", w: "Apple", e: "🍎" }, { l: "B", w: "Ball", e: "⚽" },
   { l: "C", w: "Cat", e: "🐱" }, { l: "D", w: "Dog", e: "🐶" },
@@ -386,6 +369,28 @@ var abcList = [
   { l: "U", w: "Umbrella", e: "☂️" }, { l: "V", w: "Van", e: "🚐" },
   { l: "W", w: "Watch", e: "⌚" }, { l: "X", w: "Xylophone", e: "🎹" },
   { l: "Y", w: "Yak", e: "🐃" }, { l: "Z", w: "Zebra", e: "🦓" }
+];
+
+// نئے اضافے (جانور، پھل اور رنگ)
+var animalList = [
+  { n: "شیر", e: "🦁", t: "Lion" }, { n: "ہاتھی", e: "🐘", t: "Elephant" },
+  { n: "بندر", e: "🐵", t: "Monkey" }, { n: "گائے", e: "🐄", t: "Cow" },
+  { n: "घोड़ा (گھوڑا)", e: "🐎", t: "Horse" }, { n: "بلی", e: "🐱", t: "Cat" },
+  { n: "کتا", e: "🐶", t: "Dog" }, { n: "زرافہ", e: "🦒", t: "Giraffe" }
+];
+
+var fruitList = [
+  { n: "سیب", e: "🍎", t: "Apple" }, { n: "کیلا", e: "🍌", t: "Banana" },
+  { n: "آم", e: "🥭", t: "Mango" }, { n: "انگور", e: "🍇", t: "Grapes" },
+  { n: "تربوز", e: "🍉", t: "Watermelon" }, { n: "संतरा (مالٹا)", e: "🍊", t: "Orange" },
+  { n: "انار", e: "🍎", t: "Pomegranate" }, { n: "سٹرابیری", e: "🍓", t: "Strawberry" }
+];
+
+var colorList = [
+  { n: "سرخ (لال)", e: "🔴", t: "Red" }, { n: "نیلا", e: "🔵", t: "Blue" },
+  { n: "سبز (ہرا)", e: "🟢", t: "Green" }, { n: "پیلا", e: "🟡", t: "Yellow" },
+  { n: "نارنجی", e: "🟠", t: "Orange" }, { n: "جامنی", e: "🟣", t: "Purple" },
+  { n: "سفید", e: "⚪", t: "White" }, { n: "काला (کالا)", e: "⚫", t: "Black" }
 ];
 
 var urduGinti = ["ایک","دو","تین","چار","پانچ","چھ","سات","آٹھ","نو","دس","گیارہ","بارہ","تیرہ","چودہ","پندرہ","سولہ","سترہ","اٹھارہ","انیس","بیس","اکیس","بائیس","تئیس","چوبیس","پچیس","چھبیس","ستائیس","اٹھائیس","انتیس","تیس","اکتیس","بتیس","تینتیس","چونتیس","پینتیس","چھتیس","سینتیس","اڑتیس","انتالیس","چالیس","اکتالیس","بیالیس","تینتالیس","چوالیس","پینتالیس","چھیالیس","سینتالیس","اڑتالیس","انچاس","پچاس","اکاون","باون","ترپن","چون","پچپن","چھپن","ستاون","اٹھاون","انسٹھ","ساٹھ","اکسٹھ","باسٹھ","ترسٹھ","چونسٹھ","پینسٹھ","چھیاسٹھ","سڑسٹھ","اڑسٹھ","انہتر","ستر","اکہتر","بہتر","تہتر","چوہتر","پچہتر","چھہتر","ستتر","اٹھہتر","اناسی","اسی","اکیاسی","بیاسی","تراسی","چوراسی","پچاسی","چھیاسی","ستاسی","اٹھاسی","نواسی","نوے","اکانوے","بانوے","ترانوے","چورانوے","پچانوے","چھیانوے","ستانوے","اٹھانوے","ننانوے","سو"];
@@ -458,6 +463,30 @@ function dikhao() {
     hint.innerText = '🔤 انگلش ABC: ' + (index + 1) + ' / ' + abcList.length;
     bolo(item.l + ' for ' + item.w, 'en-US');
   }
+  else if (mode === 'animals') {
+    var item = animalList[index];
+    card.innerHTML = '<div class="emoji-bara">' + item.e + '</div>' +
+                     '<div class="lafz-bara" style="color:' + color + '">' + item.n + '</div>' +
+                     '<div class="chhota-lafz">' + item.t + '</div>';
+    hint.innerText = '🦁 جانور: ' + (index + 1) + ' / ' + animalList.length;
+    bolo(item.n, 'ur-PK');
+  }
+  else if (mode === 'fruits') {
+    var item = fruitList[index];
+    card.innerHTML = '<div class="emoji-bara">' + item.e + '</div>' +
+                     '<div class="lafz-bara" style="color:' + color + '">' + item.n + '</div>' +
+                     '<div class="chhota-lafz">' + item.t + '</div>';
+    hint.innerText = '🍎 پھل: ' + (index + 1) + ' / ' + fruitList.length;
+    bolo(item.n, 'ur-PK');
+  }
+  else if (mode === 'colors') {
+    var item = colorList[index];
+    card.innerHTML = '<div class="emoji-bara">' + item.e + '</div>' +
+                     '<div class="lafz-bara" style="color:' + color + '">' + item.n + '</div>' +
+                     '<div class="chhota-lafz">' + item.t + '</div>';
+    hint.innerText = '🎨 رنگ: ' + (index + 1) + ' / ' + colorList.length;
+    bolo(item.n, 'ur-PK');
+  }
   else if (mode === 'urdu-ginti') {
     card.innerHTML = '<div class="emoji-bara">🔢</div>' +
                      '<div class="harf-bara" style="color:' + color + '">' + (index + 1) + '</div>' +
@@ -477,6 +506,9 @@ function dikhao() {
 function total() {
   if (mode === 'urdu-harf') return urduHarf.length;
   if (mode === 'abc') return abcList.length;
+  if (mode === 'animals') return animalList.length;
+  if (mode === 'fruits') return fruitList.length;
+  if (mode === 'colors') return colorList.length;
   return 100;
 }
 
@@ -541,6 +573,9 @@ menuItems.forEach(function(btn) {
     var titles = {
       'urdu-harf': 'اردو حروف (الف سے ے)',
       'abc': 'انگریزی ABC (A سے Z)',
+      'animals': 'جانوروں کے نام (Animals)',
+      'fruits': 'پھلوں کے نام (Fruits)',
+      'colors': 'رنگوں کے نام (Colors)',
       'urdu-ginti': 'اردو گنتی (ایک سے سو)',
       'eng-ginti': 'انگلش گنتی (1 to 100)',
       'quiz-game': 'بچوں کا کوئز گیم'
