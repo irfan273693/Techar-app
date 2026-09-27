@@ -100,17 +100,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 4px solid transparent;
-    background-clip: padding-box;
     position: relative;
-  }
-  .card::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 30px;
-    background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1);
-    z-index: -1;
   }
 
   .emoji-bara {
@@ -122,10 +112,9 @@
   .harf-bara {
     font-size: 100px;
     font-weight: 900;
-    color: #4a90e2;
     margin-bottom: 10px;
     line-height: 1.1;
-    text-shadow: 3px 3px 0px #feca57;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
   }
   .lafz-bara {
     font-size: 42px;
@@ -197,28 +186,6 @@
   }
   .awaz-btn:active { transform: scale(0.96); }
 
-  .ginti-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    margin-bottom: 15px;
-  }
-  .ginti-cell {
-    background: white;
-    border: 3px solid #d0e2f7;
-    border-radius: 14px;
-    padding: 16px 4px;
-    font-size: 20px;
-    font-weight: 800;
-    color: #2c3e50;
-    cursor: pointer;
-    text-align: center;
-    font-family: inherit;
-    transition: all 0.2s;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-  }
-  .ginti-cell:active { transform: scale(0.95); background: #4a90e2; color: white; }
-
   .ad-box {
     background: #fff8e1;
     border: 3px dashed #f39c12;
@@ -247,7 +214,6 @@
     .harf-bara { font-size: 75px; }
     .emoji-bara { font-size: 85px; }
     .lafz-bara { font-size: 32px; }
-    .ginti-cell { font-size: 16px; padding: 12px 2px; }
   }
 </style>
 </head>
@@ -264,16 +230,14 @@
   <h2>🌈 کھیلو اور سیکھو</h2>
   <button class="menu-item chuna" data-mode="urdu-harf">🔤 اردو حروف — الف سے ے</button>
   <button class="menu-item" data-mode="urdu-lafz">📖 اردو الفاظ — الف سے انار</button>
-  <button class="menu-item" data-mode="urdu-ginti">🔢 اردو گنتی — ایک، دو، تین</button>
-  <button class="menu-item" data-mode="eng-ginti">🔢 انگریزی گنتی — 1، 2، 3</button>
   <button class="menu-item" data-mode="abc">🅰️ انگریزی ABC — A to Z</button>
+  <button class="menu-item" data-mode="urdu-ginti">🔢 اردو گنتی — ایک سے سو</button>
+  <button class="menu-item" data-mode="eng-ginti">🔢 انگریزی گنتی — 1 سے 100</button>
 </div>
 
 <div class="main">
   <div class="hint" id="hint">🚀 Auto بٹن دبا کر خود چلاؤ</div>
   <div class="card" id="card"></div>
-
-  <div class="ginti-grid" id="gintiGrid" style="display:none;"></div>
 
   <button class="auto-btn" id="autoBtn">🚀 Auto چلاؤ</button>
   <button class="awaz-btn" id="awazBtn">🔊 آواز سنو</button>
@@ -290,7 +254,10 @@
 </div>
 
 <script>
-// ===================== ڈیٹا: پاکستانی نصاب والے صحیح الفاظ =====================
+// ===================== رنگوں کی لسٹ =====================
+var rang = ["#e74c3c", "#3498db", "#27ae60", "#9b59b6", "#e67e22", "#16a085", "#c0392b", "#2980b9", "#8e44ad", "#d35400"];
+
+// ===================== ڈیٹا =====================
 var urduHarf = [
   { h: "ا", n: "الف", e: "🍎", w: "انار" },
   { h: "ب", n: "بے", e: "🦆", w: "بطخ" },
@@ -376,12 +343,29 @@ var engGinti = [
 // ===================== حالت =====================
 var mode = "urdu-harf";
 var index = 0;
-var gintiStart = 0;
 var autoChalraha = false;
 var autoTimer = null;
 
-// ===================== آواز (لڑکی کی، تیز) =====================
+// ===================== ہلکی ٹن (بِپ) =====================
+function bip() {
+  try {
+    var ctx = new (window.AudioContext || window.webkitAudioContext)();
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.value = 880;
+    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.15);
+  } catch(e) {}
+}
+
+// ===================== آواز =====================
 function bolo(text, lang) {
+  bip();
   if (!('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel();
   var u = new SpeechSynthesisUtterance(text);
@@ -394,7 +378,7 @@ function bolo(text, lang) {
   for (var i = 0; i < voices.length; i++) {
     var v = voices[i];
     var nm = v.name.toLowerCase();
-    if (v.lang.indexOf('ur') === 0 || v.lang.indexOf('hi') === 0 || v.lang === 'en-IN') {
+    if (v.lang.indexOf('ur') === 0 || v.lang.indexOf('hi') === 0) {
       if (nm.indexOf('female') !== -1 || nm.indexOf('woman') !== -1 ||
           nm.indexOf('zira') !== -1 || nm.indexOf('heera') !== -1 ||
           nm.indexOf('swara') !== -1 || nm.indexOf('kalpana') !== -1) {
@@ -415,83 +399,72 @@ if ('speechSynthesis' in window) {
 function dikhao() {
   var card = document.getElementById('card');
   var hint = document.getElementById('hint');
-  var grid = document.getElementById('gintiGrid');
-  grid.style.display = 'none';
-  grid.innerHTML = '';
   card.style.display = 'flex';
 
-  if (mode === 'urdu-harf' || mode === 'urdu-lafz') {
+  var color = rang[index % rang.length];
+
+  if (mode === 'urdu-harf') {
     var item = urduHarf[index];
-    if (mode === 'urdu-harf') {
-      card.innerHTML = '<div class="emoji-bara">' + item.e + '</div>' +
-                       '<div class="harf-bara">' + item.h + '</div>' +
-                       '<div class="lafz-bara">' + item.n + '</div>' +
-                       '<div class="chhota-lafz">' + item.w + '</div>';
-      bolo(item.n + '۔ ' + item.w, 'ur-PK');
-    } else {
-      card.innerHTML = '<div class="emoji-bara">' + item.e + '</div>' +
-                       '<div class="harf-bara">' + item.h + '</div>' +
-                       '<div class="lafz-bara">' + item.w + '</div>';
-      bolo(item.w, 'ur-PK');
-    }
+    card.innerHTML = '<div class="emoji-bara">' + item.e + '</div>' +
+                     '<div class="harf-bara" style="color:' + color + '">' + item.h + '</div>' +
+                     '<div class="lafz-bara">' + item.n + '</div>' +
+                     '<div class="chhota-lafz">' + item.w + '</div>';
     hint.innerText = '📖 ' + (index + 1) + ' / ' + urduHarf.length;
+    bolo(item.n + '۔ ' + item.w, 'ur-PK');
+  }
+
+  else if (mode === 'urdu-lafz') {
+    var item = urduHarf[index];
+    card.innerHTML = '<div class="emoji-bara">' + item.e + '</div>' +
+                     '<div class="harf-bara" style="color:' + color + '">' + item.h + '</div>' +
+                     '<div class="lafz-bara" style="color:' + color + '">' + item.w + '</div>';
+    hint.innerText = '📖 ' + (index + 1) + ' / ' + urduHarf.length;
+    bolo(item.w, 'ur-PK');
   }
 
   else if (mode === 'abc') {
     var item = abcList[index];
     card.innerHTML = '<div class="emoji-bara">' + item.e + '</div>' +
-                     '<div class="harf-bara">' + item.l + '</div>' +
-                     '<div class="lafz-bara">' + item.w + '</div>';
+                     '<div class="harf-bara" style="color:' + color + '">' + item.l + '</div>' +
+                     '<div class="lafz-bara">' + item.l + ' for ' + item.w + '</div>';
     hint.innerText = '🅰️ ' + (index + 1) + ' / ' + abcList.length;
-    bolo(item.l + '. ' + item.w, 'en-US');
+    bolo(item.l + ' for ' + item.w, 'en-US');
   }
 
-  else if (mode === 'urdu-ginti' || mode === 'eng-ginti') {
-    card.style.display = 'none';
-    grid.style.display = 'grid';
-    hint.innerText = '🔢 ' + (gintiStart + 1) + ' سے ' + (gintiStart + 10) + ' تک';
-    for (var i = 0; i < 10; i++) {
-      var num = gintiStart + i + 1;
-      var cell = document.createElement('button');
-      cell.className = 'ginti-cell';
-      cell.innerText = (mode === 'urdu-ginti') ? urduGinti[num - 1] : num;
-      cell.setAttribute('data-num', num);
-      cell.onclick = (function(n) {
-        return function() {
-          if (mode === 'urdu-ginti') bolo(urduGinti[n - 1], 'ur-PK');
-          else bolo(engGinti[n - 1], 'en-US');
-        };
-      })(num);
-      grid.appendChild(cell);
-    }
-    var pehla = gintiStart + 1;
-    if (mode === 'urdu-ginti') bolo(urduGinti[pehla - 1], 'ur-PK');
-    else bolo(engGinti[pehla - 1], 'en-US');
+  else if (mode === 'urdu-ginti') {
+    card.innerHTML = '<div class="harf-bara" style="color:' + color + '">' + (index + 1) + '</div>' +
+                     '<div class="lafz-bara" style="color:' + color + '">' + urduGinti[index] + '</div>';
+    hint.innerText = '🔢 ' + (index + 1) + ' / 100';
+    bolo(urduGinti[index], 'ur-PK');
   }
+
+  else if (mode === 'eng-ginti') {
+    card.innerHTML = '<div class="harf-bara" style="color:' + color + '">' + (index + 1) + '</div>' +
+                     '<div class="lafz-bara">' + engGinti[index] + '</div>';
+    hint.innerText = '🔢 ' + (index + 1) + ' / 100';
+    bolo(engGinti[index], 'en-US');
+  }
+}
+
+// ===================== کل تعداد =====================
+function total() {
+  if (mode === 'urdu-harf' || mode === 'urdu-lafz') return urduHarf.length;
+  if (mode === 'abc') return abcList.length;
+  return 100;
 }
 
 // ===================== اگلا پچھلا =====================
 function next() {
-  if (mode === 'urdu-harf' || mode === 'abc' || mode === 'urdu-lafz') {
-    var total = (mode === 'abc') ? abcList.length : urduHarf.length;
-    index = (index + 1) % total;
-  } else {
-    gintiStart = (gintiStart + 10) % 100;
-  }
+  index = (index + 1) % total();
   dikhao();
 }
 
 function prev() {
-  if (mode === 'urdu-harf' || mode === 'abc' || mode === 'urdu-lafz') {
-    var total = (mode === 'abc') ? abcList.length : urduHarf.length;
-    index = (index - 1 + total) % total;
-  } else {
-    gintiStart = (gintiStart - 10 + 100) % 100;
-  }
+  index = (index - 1 + total()) % total();
   dikhao();
 }
 
-// ===================== Auto چلاؤ =====================
+// ===================== Auto =====================
 function autoBand() {
   autoChalraha = false;
   document.getElementById('autoBtn').classList.remove('chalraha');
@@ -506,9 +479,9 @@ function autoChalao() {
   function step() {
     if (!autoChalraha) return;
     next();
-    autoTimer = setTimeout(step, 2500);
+    autoTimer = setTimeout(step, 3000);
   }
-  autoTimer = setTimeout(step, 2500);
+  autoTimer = setTimeout(step, 3000);
 }
 
 document.getElementById('autoBtn').onclick = function() {
@@ -534,10 +507,10 @@ menuItems.forEach(function(btn) {
     menuItems.forEach(function(b) { b.classList.remove('chuna'); });
     this.classList.add('chuna');
     mode = this.getAttribute('data-mode');
-    index = 0; gintiStart = 0;
+    index = 0;
     autoBand();
 
-    var titles = { 'urdu-harf': 'اردو حروف', 'urdu-lafz': 'اردو الفاظ', 'urdu-ginti': 'اردو گنتی', 'eng-ginti': 'انگریزی گنتی', 'abc': 'انگریزی ABC' };
+    var titles = { 'urdu-harf': 'اردو حروف', 'urdu-lafz': 'اردو الفاظ', 'abc': 'انگریزی ABC', 'urdu-ginti': 'اردو گنتی', 'eng-ginti': 'انگریزی گنتی' };
     document.getElementById('title').innerText = titles[mode];
 
     menu.classList.remove('khula'); parda.classList.remove('dikhao');
